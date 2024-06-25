@@ -29,7 +29,7 @@ int main() {
         return 1;
     }
 
-    lwip_mqtt_connect(client);
+    lwip_mqtt_connect(client, &CONNECTION_CB_ARG_DEFAULT);
 
     sleep_ms(TIMEOUT_MS);
 
