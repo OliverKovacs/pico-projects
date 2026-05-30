@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.13)
+cmake_minimum_required(VERSION 4.0)
 include(pico_sdk_import.cmake)
 project(temperature_project C CXX ASM)
 set(PICO_BOARD pico_w)
@@ -32,4 +32,12 @@ add_definitions(
     -DMQTT_ID="$ENV{MQTT_ID}"
     -DMQTT_USER="$ENV{MQTT_USER}"
     -DMQTT_PASS="$ENV{MQTT_PASS}"
+    -DMQTT_TOPIC_TEMPERATURE="$ENV{MQTT_TOPIC_TEMPERATURE}"
+    -DMQTT_TOPIC_HUMIDITY="$ENV{MQTT_TOPIC_HUMIDITY}"
+)
+
+target_compile_options(temperature PRIVATE
+    -Wall
+    -Wextra
+    # -Wpedantic    # pico-sdk is sloppy
 )
